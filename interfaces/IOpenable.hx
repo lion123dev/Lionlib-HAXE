@@ -6,6 +6,6 @@ package core.interfaces;
 
 interface IOpenable 
 {
-  public var Opened(get, set):Bool;
-  public var Completed(get, set):Bool;
+  var Opened(get, set):Bool;
+  var Completed(get, set):Bool;
 }
