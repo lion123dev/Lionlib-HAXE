@@ -66,16 +66,8 @@ class ContiniousTerrainMapRight extends FlxGroup
 		add(map);
 		iterationsPassed++;
 	}
-	
-	override public function update():Void 
+	private function CheckOutOfBounds():Void
 	{
-		super.update();
-		
-	}
-	
-	public function MoveByX(amount:Float):Void
-	{
-		map.x += amount;
 		var prevX:Float = map.x;
 		//default: x=0  needs to move mapW*tileW
 		if (prevX > 0)
@@ -90,5 +82,18 @@ class ContiniousTerrainMapRight extends FlxGroup
 			map.x += prevX + 2 * mapWidth * tileWidth;
 			return;
 		}
+	}
+	override public function update():Void 
+	{
+		super.update();
+		CheckOutOfBounds();
+		
+		
+	}
+	
+	public function MoveByX(amount:Float):Void
+	{
+		map.x += amount;
+		CheckOutOfBounds();
 	}
 }

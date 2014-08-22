@@ -8,18 +8,16 @@ import core.data.KeyGroup;
 class KeyAlias
 {
 
-	public function new() 
-	{
-		
-	}
-	private static var keyGroups:Array<KeyGroup>;
+	public function new() {	}
+	private static var keyGroups:Array<KeyGroup> = [];
 	
 	public static function AddAlias(group:String, key:Int):Void
 	{
 		var keyGroup:KeyGroup = GetGroup(group);
-		if (!keyGroup)
+		if (keyGroup == null)
 		{
 			keyGroup = new KeyGroup(group);
+			keyGroups.push(keyGroup);
 		}
 		keyGroup.addKey(key);
 	}
@@ -27,13 +25,14 @@ class KeyAlias
 	public static function AddAliases(group:String, keys:Array<Int>):Void
 	{
 		var keyGroup:KeyGroup = GetGroup(group);
-		if (!keyGroup)
+		if (keyGroup == null)
 		{
 			keyGroup = new KeyGroup(group);
+			keyGroups.push(keyGroup);
 		}
 		for (i in keys)
 		{
-			keyGroup.addKey(key);
+			keyGroup.addKey(i);
 		}
 	}
 	
